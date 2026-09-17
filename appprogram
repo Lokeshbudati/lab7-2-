@@ -1,20 +1,10 @@
+# Student Attendance CSV Log Generator
+print("Processing daily student check-in logs...")
 
-import os
+with open("attendance_report.csv", "w") as f:
+    f.write("Student_ID,Student_Name,Status,CheckIn_Time\n")
+    f.write("STU001,Lokesh Budati,Present,09:00 AM\n")
+    f.write("STU002,John Doe,Present,08:55 AM\n")
+    f.write("STU003,Jane Smith,Absent,NA\n")
 
-print("Initializing Academic Database Report Generation Module...")
-
-try:
-    with open("report.txt", "w") as f:
-        f.write("=====================================================\n")
-        f.write("STUDENT MANAGEMENT & ACADEMIC PERFORMANCE REPORT\n")
-        f.write("=====================================================\n")
-        f.write("Total Registered Students: 120\n")
-        f.write("Active Academic Sessions Evaluated: 45\n")
-        f.write("Overall System Passing Percentage: 91.5%\n")
-        f.write("Deployment Verification Node: Windows-Agent\n")
-        f.write("=====================================================\n")
-    
-    print("SUCCESS: 'report.txt' has been created in the workspace root.")
-
-except Exception as e:
-    print(f"ERROR: Failed to write report file. Detail: {str(e)}")
+print("Attendance report successfully generated as a CSV artifact.")
