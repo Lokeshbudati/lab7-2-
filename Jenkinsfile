@@ -2,28 +2,22 @@ pipeline {
     agent any
     
     stages {
-        stage('Checkout Source Code') {
+        stage('Checkout') {
             steps {
+                
                 checkout scm
             }
         }
         
-        stage('Generate Academic Report') {
+        stage('Generate Attendance Report') {
             steps {
-                echo 'Stepping into directory and executing Python backend report processing layer...'
-             
-                bat '''
-                    cd appprogram
-                    python app.py
-                '''
+                bat 'python app.py'
             }
         }
         
-        stage('Archive System Artifacts') {
+        stage('Archive CSV Artifact') {
             steps {
-                echo 'Archiving generated text files cleanly to Jenkins storage dashboard...'
-            
-                archiveArtifacts artifacts: 'appprogram/report.txt', fingerprint: true
+                archiveArtifacts artifacts: 'attendance_report.csv', fingerprint: true
             }
         }
     }
